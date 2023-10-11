@@ -1,9 +1,20 @@
 running=1
 cd C:/Users/Андрей/Desktop
 git init
-#git remote add origin https://github.com/FaStYcRoSS/test.git
-while [ $running -eq 1 ]
-do
+
+git remote get-url origin
+read -p "Is this right remote repository? (y/n) > " answer
+while [[ $answer != "y" && $answer != "n" ]]; do
+	read -p "Incorrect answer. Print only \"y\" or \"n\" > " answer
+done
+if [ $answer == "n" ]; then
+	read -p "Print the right repository URL > " answer
+	git remote set-url origin "$answer"
+else
+	echo "Okay. Starting program..."
+fi
+
+while [ $running -eq 1 ]; do
 	echo What do you want do?
 	echo 0 - exit
 	echo 1 - send files
