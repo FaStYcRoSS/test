@@ -1,15 +1,18 @@
 running=1
 cd C:/Users/Андрей/Desktop
-while [ running -eq 1 ]
 git init
 #git remote add origin https://github.com/FaStYcRoSS/test.git
+while [ $running -eq 1 ]
 do
 	echo What do you want do?
+	echo 0 - exit
 	echo 1 - send files
 	echo 2 - delete files
 	read -p ">>> " answer
 	
 	case $answer in
+	0)  running=0;
+		read -p "Now, you can press Enter to exit from program...";;
 	1)	read -p "What file you want to share? > " answer;
 		git add $answer;
 		read -p "Any description for your commit? > " answer;
